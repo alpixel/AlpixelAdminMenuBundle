@@ -2,7 +2,9 @@
 AlpixelAdminMenuBundle
 =================
 
-[![Latest Stable Version](https://poser.pugx.org/alpixel/adminmenubundle/v/stable)](https://packagist.org/packages/alpixel/adminmenubundle)
+[![Latest Stable Version](https://poser.pugx.org/alpixel/adminmenubundle/v/stable)](https://packagist.org/packages/alpixel/adminmenubundle) 
+[![Build Status](https://scrutinizer-ci.com/g/alpixel/AlpixelAdminMenuBundle/badges/build.png?b=master)](https://scrutinizer-ci.com/g/alpixel/AlpixelAdminMenuBundle/build-status/master) 
+[![Build Status](https://travis-ci.org/alpixel/AlpixelAdminMenuBundle.svg?branch=master)](https://travis-ci.org/alpixel/AlpixelAdminMenuBundle)
 
 ## Installation
 
