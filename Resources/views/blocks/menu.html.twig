@@ -1,0 +1,56 @@
+{% extends 'knp_menu.html.twig' %}
+
+{% macro attributes(attributes) %}
+    {% for name, value in attributes %}
+        {%- if value is not none and value is not same as(false) -%}
+            {{- ' %s="%s"'|format(name, value is same as(true) ? name|e : value|e)|raw -}}
+        {%- endif -%}
+    {%- endfor -%}
+{% endmacro %}
+
+{% block list %}
+    {% if item.hasChildren and options.depth is not same as(0) and item.displayChildren %}
+        {% if item.parent is not null %}
+            <ul class="treeview-menu">
+                {{ block('children') }}
+            </ul>
+        {% else %}
+            {% import _self as knp_menu %}
+            <ul{{ knp_menu.attributes(listAttributes) }}>
+                {{ block('children') }}
+            </ul>
+        {% endif %}
+    {% endif %}
+{% endblock %}
+
+
+{% block linkElement %}
+    {% import _self as knp_menu %}
+    <a href="{{ item.uri }}"{{ knp_menu.attributes(item.linkAttributes) }}>
+        {% if item.attribute('icon') is not empty %}
+            <i class="fa fa-{{ item.attribute('icon') }}"></i>
+        {% endif %}
+        {% if item.hasChildren and options.depth is not same as(0) and item.displayChildren %}
+            {% if item.parent is not null %}
+                <i class="fa fa-angle-left pull-right"></i>
+            {% endif %}
+        {% endif %}
+
+        <span>{{ block('label') }}</span>
+        {% if item.attribute('badge') is not empty and item.attribute('badge') > 0 %}
+            <span class="badge">{{ item.attribute('badge') }}</span>
+        {% endif %}
+
+    </a>
+{% endblock %}
+
+{% block spanElement %}
+    {% import _self as knp_menu %}
+    <span>{{ knp_menu.attributes(item.labelAttributes) }}>
+        {% if item.attribute('icon') is not empty %}
+            <i class="fa fa-{{ item.attribute('icon') }}"></i>
+        {% endif %}
+        {{ block('label') }}
+    </span>
+{% endblock %}
+
