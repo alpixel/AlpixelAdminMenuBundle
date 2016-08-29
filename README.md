@@ -49,6 +49,9 @@ composer require 'alpixel/adminmenubundle'
                 children_2:
                     type: 'route'
                     route: 'what_you_want_2'
+                    parameters: # You can add static parameters to the route link
+                        my_parameter_1: 'a value'
+                        my_parameter_2: 3
 ```
 
 * To display the menu use this line in your template
