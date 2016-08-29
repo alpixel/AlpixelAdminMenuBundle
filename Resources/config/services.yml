@@ -1,0 +1,21 @@
+services:
+    app.menu_builder:
+        class: Alpixel\Bundle\AdminMenuBundle\Menu\MenuBuilder
+        calls:
+            - [ setContainer,[ "@service_container" ] ]
+        arguments:
+            - "@knp_menu.factory"
+            - "@router"
+            - "@controller_name_converter"
+            - "@security.token_storage"
+            - "@security.authorization_checker"
+
+    app.main_menu:
+        class: Knp\Menu\MenuItem # the service definition requires setting the class
+        factory: ["@app.menu_builder", createMainMenu]
+        arguments:
+            - "@request_stack"
+            - "%kernel.root_dir%"
+        tags:
+            - { name: knp_menu.menu, alias: main }
+

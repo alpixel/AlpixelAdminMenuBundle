@@ -1,0 +1,22 @@
+{% extends 'CnertaBreadcrumbBundle::cnerta_breadcrumb.html.twig' %}
+
+{% block root %}
+
+    {% if items is not empty %}
+        <ol class="breadcrumb">
+            {% for item in items %}
+                <li>
+                    {% if not loop.last %}
+                        {% if not loop.first %}
+                            <a href="{{ item.uri }}">{{ item.label }}</a>
+                        {% else %}
+                            <a href="{{ item.uri }}">Accueil</a>
+                        {% endif %}
+                    {% else %}
+                        <span>{{ item.label }}</span>
+                    {% endif %}
+                </li>
+            {% endfor %}
+        </ol>
+    {% endif %}
+{% endblock root %}
